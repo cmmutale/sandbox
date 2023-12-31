@@ -1,0 +1,24 @@
+{
+  "title": "navigation menu",
+  "description": "a list of links for the entire site",
+  "mainMenu": [
+    {
+      "title": "Searchbar",
+      "url": "searchbar"
+    },
+    {
+      "title": "Slide",
+      "url": "slide"
+    },
+    {
+      "title": "Top menu",
+      "url": "/topmenu",
+      "subLinks": [
+        {
+          "title": "nested link",
+          "url": "/nestedlink"
+        }
+      ]
+    }
+  ]
+}
