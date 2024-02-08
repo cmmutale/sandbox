@@ -16,7 +16,7 @@ function SearchbarFilter() {
         return results;
     }
 
-    console.log(filterResults(value))
+    // console.log(filterResults(value))
     return (
         <div
             className={`

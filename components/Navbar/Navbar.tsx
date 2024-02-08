@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import navigation from '@/data/navigation.json'
+import NavMenu from './NavMenu'
 
 function Navbar() {
     const [activeMenu, setActiveMenu] = useState(false)
@@ -46,12 +47,6 @@ function Navbar() {
             }
         },
     }
-    const menu = [
-        "searchbar",
-        "slide",
-        "About",
-        "Portfolio"
-    ]
     return (
         <div className={
             `flex items-start w-full py-0 px-[10vw] bg-black duration-500 absolute top-0 transition-all h-0 z-50
@@ -60,17 +55,17 @@ function Navbar() {
             w-full px-[10vw] absolute right-0 top-0 pt-[7rem]
             flex justify-between items-center">
                 <div>
-                <button
-                    className={`cursor-pointer transition-colors duration-500
+                    <button
+                        className={`cursor-pointer transition-colors duration-500
                 ${activeMenu && 'text-white duration-500 transition-all'}`}>learn more</button>
-                {
-                    activeMenu && (
-                        <Link href='/'
-                        onClick={() => handleClick()}
-                        className={`cursor-pointer transition-colors duration-500 ml-3 hover:bg-white/20 p-1 rounded-md
-                    ${activeMenu && 'text-white duration-500 transition-all'}`}>🏠 Back home</Link>    
-                    )
-                }
+                    {
+                        activeMenu && (
+                            <Link href='/'
+                                onClick={() => handleClick()}
+                                className={`cursor-pointer transition-colors duration-500 ml-3 hover:bg-white/20 p-1 rounded-md
+                    ${activeMenu && 'text-white duration-500 transition-all'}`}>🏠 Back home</Link>
+                        )
+                    }
                 </div>
                 <div
                     className="burger-menu-container 
@@ -98,29 +93,9 @@ function Navbar() {
             </div>
             <div className={`menu-content absolute top-[30vh] hidden
             ${activeMenu && '!block duration-500 transition-all'}`}>
-                <motion.ul
-                    animate={activeMenu ? 'open' : 'close'}
-                    variants={motionVariants}>
-                    {
-                        navigation.mainMenu.map((item: any, index: any) => {
-                            return (
-                                <motion.li
-                                key={index}
-                                    variants={listItemsVariants}
-                                    className='py-2'>
-                                    <Link
-                                        onClick={() => handleClick()}
-                                        href={`/${item.url.toLowerCase()}`}
-                                        className='text-xl 
-                                    transition-colors duration-200
-                                    hover:transition-colors hover:duration-200
-                                    hover:text-[rgb(232,232,232)]
-                                    text-[rgb(127,127,127)]'>{item.title}</Link>
-                                </motion.li>
-                            )
-                        })
-                    }
-                </motion.ul>
+                <NavMenu
+                    activeMenu={activeMenu}
+                    handleClick={handleClick} />
             </div>
         </div>
     )

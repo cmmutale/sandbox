@@ -5,8 +5,7 @@ function SliderMenu() {
     const list = ["item 1", "item 2", "item 4", "item 5", "item 6", "item 7", "item 8", "item 9", "item 10", "item 11", "item 12", "item 13"]
     const [isClient, setIsClient] = useState(false)
     const [isDragging, setIsDragging] = useState(false)
-    const slider = useRef(null)
-    const button = useRef(null)
+    const slider = useRef<HTMLUListElement>(null)
 
     function moveSlider(direction: string) {
         if (slider.current) {
@@ -18,7 +17,7 @@ function SliderMenu() {
         }
     }
 
-    function dragging(e) {
+    function dragging(e:any) {
         if (slider.current && isDragging) {
             console.log('dragging...')
             slider.current.scrollLeft -= e.movementX;
@@ -42,7 +41,7 @@ function SliderMenu() {
                 onMouseLeave={() => setIsDragging(false)}
                 onMouseMove={(e) => dragging(e)}
                 ref={slider}
-                className='flex items gap-2 w-full overflow-hidden px-12 cursor-pointer'>
+                className='flex items gap-2 w-full sm:overflow-hidden overflow-x-scroll px-12 cursor-pointer'>
                 {list.map((item, index) => (
                     <li
                         key={index}
@@ -51,16 +50,14 @@ function SliderMenu() {
             </ul>
             <button
                 onClick={() => moveSlider("left")}
-                ref={button}
                 className='absolute w-12
-            top-1/2 -translate-y-1/2 h-full flex items-center left-0 bg-white p-2'>
+            top-1/2 -translate-y-1/2 h-full flex items-center left-0 bg-white p-2 max-sm:hidden'>
                 <span className='text-2xl hover:scale-110 active:scale-100 transition-all'>👈</span>
             </button>
             <button
                 onClick={() => moveSlider("right")}
-                ref={button}
                 className='absolute w-12
-            top-1/2 -translate-y-1/2 h-full flex items-center right-0 bg-white p-2'>
+            top-1/2 -translate-y-1/2 h-full flex items-center right-0 bg-white p-2 max-sm:hidden'>
                 <span className='text-2xl hover:scale-110 active:scale-100 transition-all'>👉</span>
             </button>
         </div>

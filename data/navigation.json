@@ -11,14 +11,8 @@
       "url": "slide"
     },
     {
-      "title": "Top menu",
-      "url": "/topmenu",
-      "subLinks": [
-        {
-          "title": "nested link",
-          "url": "/nestedlink"
-        }
-      ]
+      "title": "Editor",
+      "url": "editor"
     }
   ]
 }
